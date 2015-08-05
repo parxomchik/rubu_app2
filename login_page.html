@@ -1,0 +1,169 @@
+<nav class="navbar navbar-default margin_fix">
+    <div class="container-fluid" ng-controller="loginCtrl">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            </ul>
+            <!--<ul class="nav navbar-nav navbar-right">-->
+            <!--<li><a href="#">Link</a></li>-->
+            <button id="login" type="button" class="btn btn-default navbar-btn navbar-right " data-toggle="modal" data-target="#myModal"><img class="btn_img"  src="img/business-contact.png" alt=""/>Вхід для співробітників</button>
+            <button id="kabinet" type="button" class="btn btn-default navbar-btn navbar-right " data-toggle="modal" data-target="#kabinet_modal"><img class="btn_img" src="img/business-contact.png" alt=""/>Вхід в кабінет</button>
+            <button id="register" type="button" class="btn btn-default navbar-btn navbar-right " data-toggle="modal" data-target="#register_modal"><img class="btn_img" src="img/business-contact.png" alt=""/>Регістрація</button>
+
+            <!--</ul>-->
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div id="owl-demo" class="owl-carousel owl-theme">
+    <div class="item"><img class="img-responsive" src="img/1.jpg" alt="The Last of us"></div>
+    <div class="item"><img class="img-responsive" src="img/2.jpg" alt="GTA V"></div>
+    <div class="item"><img class="img-responsive" src="img/3.jpg" alt="Mirror Edge"></div>
+    <!--<div class="item"><img class="img-responsive" src="img/intro-04.jpg" alt="Mirror Edge"></div>-->
+</div>
+<div class="customNavigation">
+    <a id="prev"  class="btn btn-primary "><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+    <a id="next"  class="btn btn-primary "><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+</div>
+
+<div class="modal fade col-xs-12" id="myModal" tabindex="-1" role="dialog" aria-labelledby="loginlabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content col-xs-12">
+            <div class="massage_box"></div>
+            <div class="modal-header col-xs-12">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginlabel">Вхід для співробітників</h4>
+            </div>
+            <div class="modal-body col-xs-12">
+                <div class="form-group">
+                    <label>Код співробітника</label>
+                    <input  class="form-control" id="kod" placeholder="Введіть код">
+                </div>
+            </div>
+            <div class="col-xs-12 ">
+                <div class="row">
+                    <div class="col-md-3 col-xs-6">
+                        <a href="#" class="thumbnail">
+                            <button type="button" id="vxod_na_rabotu" class="btn btn-primary btn-block">Вхід на роботу</button>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <a href="#" class="thumbnail">
+                            <button id="vuhod_na_obed"  type="button" class="btn btn-success btn-block">Вихід на обід</button>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <a href="#" class="thumbnail">
+                            <button id="vgod_s_obeda" type="button" class="btn btn-info btn-block">Вхід з обіду</button>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <a href="#" class="thumbnail">
+                            <button id="vuhod_s_rabotu" type="button" class="btn  btn-danger btn-block">Віхід з роботи</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer col-xs-12">
+                <button id="close_modal" type="button" class="btn btn-default btn-block" data-dismiss="modal">Закрити</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade col-xs-12" id="kabinet_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content col-xs-12">
+            <div class="massage_box" ></div>
+            <div class="modal-header col-xs-12">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Вхід для співробітників</h4>
+            </div>
+            <div class="modal-body col-xs-12">
+                <form>
+                    <div class="form-group">
+                        <label for="kabinet_login">Логін</label>
+                        <input type="text" class="form-control" id="kabinet_login" placeholder="Введіть логін">
+                    </div>
+                    <div class="form-group">
+                        <label for="register_password">Пароль</label>
+                        <input type="password" class="form-control" id="kabinet_password" placeholder="Введіть пароль">
+                    </div>
+                    <a href="#/clientpage" type="submit" class="btn btn-success btn-block">Вхід</a>
+                </form>
+            </div>
+            <div class="col-xs-12 ">
+                <div class="row">
+                </div>
+                <div class="modal-footer col-xs-12">
+                    <button id="" type="button" class="btn btn-default btn-block" data-dismiss="modal">Закрити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade col-xs-12" id="register_modal" tabindex="-1" role="dialog" aria-labelledby="register_label" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content col-xs-12">
+            <div class="massage_box" ></div>
+            <div class="modal-header col-xs-12">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="register_label">Вхід для співробітників</h4>
+            </div>
+            <div class="modal-body col-xs-12">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Логін</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Введіть логін">
+                    </div>
+                    <div class="form-group">
+                        <label for="register_password">Пароль</label>
+                        <input type="password" class="form-control" id="register_password" placeholder="Введіть пароль">
+                        <label for="register_password_retype">Повторіть пароль</label>
+                        <input type="password" class="form-control" id="register_password_retype" placeholder="Повторіть пароль">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Регістрація</button>
+                </form>
+            </div>
+            <div class="col-xs-12 ">
+                <div class="row">
+                </div>
+                <div class="modal-footer col-xs-12">
+                    <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Закрити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        var owl = $("#owl-demo");
+
+        $("#owl-demo").owlCarousel({
+            autoPlay : 4000,
+            slideSpeed : 600,
+            paginationSpeed : 1000,
+            singleItem:true,
+            //navigation: false,
+            pagination: false
+        });
+        $("#next").click(function(){
+            owl.trigger('owl.next');
+            //alert('vse good')
+        });
+        $("#prev").click(function(){
+            owl.trigger('owl.prev');
+        });
+</script>

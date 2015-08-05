@@ -1,0 +1,158 @@
+<div ng-controller="mortalityCtrl">
+    <nav class="navbar navbar-inverse margin_fix border_radius_fix">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown login_user">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Добро пожаловать,Иван<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Изменить пароль</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Выйти</a></li>
+                        </ul>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+<div class="col-sm-12">
+    <div class="col-sm-4 margin_top_20"><a class="btn btn-default" href="#/clientpage" role="button">Назад в меню</a></div>
+    <div class="col-sm-8">
+        <h2 class="text-left">Смертність за період 04.08.2015</h2>
+    </div>
+    <div class="col-sm-6">
+        <h4 class="text-center">Контрагент: К7</h4>
+    </div>
+    <div class="col-sm-6">
+        <h4 class="text-center">Автор: Пупкін Микола</h4>
+    </div>
+    <button type="button" class="btn btn-warning col-sm-2 margin_left_15 margin_top_20" data-toggle="modal" data-target="#myModal">Додати</button>
+    <div class="col-sm-6 col-sm-offset-3">
+        <!--<p class="align_top">Продажі за період:</p>-->
+        <div class="form-group">
+            <label class="control-label"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i> Смертність за період:</label><br>
+            <div class="form-group col-sm-4">
+                <input type="text" class="form-control" ng-model="fromDate" data-max-date="{{untilDate}}" placeholder="З" bs-datepicker>
+            </div>
+            <div class="form-group col-sm-4">
+                <input type="text" class="form-control" ng-model="untilDate" data-min-date="{{fromDate}}" placeholder="По" bs-datepicker>
+            </div>
+            <button type="button" class="btn btn-success col-sm-3">Примінити</button>
+        </div>
+        <!--</form>-->
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <td>
+                <a  ng-click="sortType = 'articul'; sortReverse = !sortReverse">
+                    Артикул
+                    <span ng-show="sortType == 'articul' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'articul' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                    Назва
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'count'; sortReverse = !sortReverse">
+                    Тип
+                    <span ng-show="sortType == 'count' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'count' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'count'; sortReverse = !sortReverse">
+                    Кількість
+                    <span ng-show="sortType == 'count' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'count' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="mortality in mortalitys | orderBy:sortType:sortReverse | filter:searchFish">
+            <td>{{ mortality.articul }}</td>
+            <td>{{ mortality.name }}</td>
+            <td>{{ mortality.type }}</td>
+            <td>{{ mortality.count }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <button  type="button" class="btn btn-success btn-lg center-block">Зберегти</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" ng-submit="addRow()">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">articul</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="articul"
+                                   ng-model="articul" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Employees</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Type</label>
+                        <div class="col-md-4">
+                            <!--<input type="text" class="form-control" name="type"-->
+                            <!--ng-model="type" />-->
+                            <select class="form-control" ng-model="type">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Headoffice</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="headoffice"
+                                   ng-model="count" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div style="padding-left:110px">
+                            <input type="submit" value="Зберегти" class="btn btn-primary"/>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+    /*min-height: 600px;*/
+}
+nav>button {
+    z-index: 1000;
+    border-radius: 0;
+    padding-left: 5px;
+
+}
+.navbar-btn {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+#login {
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*z-index: 1000;*/
+    /*border-radius: 0;*/
+    /*padding-left: 5px;*/
+    /*margin-top: 3px;*/
+    /*margin-bottom: 3px;*/
+}
+.thumbnail {
+    border: none;
+}
+#prev {
+    position: absolute;
+    top:45%;
+    left: 2%;
+}
+#next {
+    position: absolute;
+    top:45%;
+    right: 2%;
+}
+.btn_img {
+    padding-right: 10px;
+}
+.modal-footer {
+    padding-left: 0;
+    padding-right: 0;
+}
+/*#business-contact {*/
+    /*padding-right: 10px;*/
+/*}*/
+#vxod_na_rabotu,
+#vuhod_na_obed,
+#vgod_s_obeda,
+#vuhod_s_rabotu{
+    min-width: 120px;
+}
+.margin_fix {
+    margin: 0;
+}
+/*.navbar-inverse {*/
+    /*border-radius: 0;*/
+/*}*/
+.border_radius_fix {
+    border-radius: 0;
+}
+.thumbnail img {
+    max-width: 200px;
+}
+.icon_text {
+    color: black;
+    font-size: 16px;
+}
+.login_user {
+    color: white;
+    /*padding-top: 15px;*/
+}
+.thumbnail {
+    background-color: inherit;
+}
+.margin_top_20 {
+    margin-top: 20px;
+}
+.margin_left_15 {
+    margin-left: 15px;
+}
