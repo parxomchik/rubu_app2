@@ -1,4 +1,4 @@
-<div ng-controller="salesCtrl">
+<div ng-controller="ordersCtrl">
     <nav class="navbar navbar-inverse margin_fix border_radius_fix">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,7 +31,7 @@
 <div class="col-sm-12">
     <div class="col-sm-4 margin_top_20"><a class="btn btn-default" href="#/clientpage" role="button">Назад в меню</a></div>
     <div class="col-sm-8">
-        <h2 class="text-left">Продажі за період 04.08.2015</h2>
+        <h2 class="text-left">Замовлення за період {{date | date:'dd.MM.yyyy'}}</h2>
     </div>
     <div class="col-sm-6">
         <h4 class="text-center">Контрагент: К7</h4>
@@ -39,20 +39,34 @@
     <div class="col-sm-6">
         <h4 class="text-center">Автор: Пупкін Микола</h4>
     </div>
-    <button type="button" class="btn btn-warning col-sm-2 margin_left_15 margin_top_20">Імпорт с Excel</button>
-    <div class="col-sm-6 col-sm-offset-3">
-        <!--<p class="align_top">Продажі за період:</p>-->
-        <div class="form-group">
-            <label class="control-label"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i> Продажі за період:</label><br>
-            <div class="form-group col-sm-4">
-                <input type="text" class="form-control" ng-model="fromDate" data-max-date="{{untilDate}}" placeholder="З" bs-datepicker>
+    <form class="form-horizontal" role="form" ng-submit="addRow()">
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Артикул</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="articul"
+                       ng-model="articul" />
             </div>
-            <div class="form-group col-sm-4">
-                <input type="text" class="form-control" ng-model="untilDate" data-min-date="{{fromDate}}" placeholder="По" bs-datepicker>
-            </div>
-            <button type="button" class="btn btn-success col-sm-3">Примінити</button>
         </div>
-        <!--</form>-->
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Назва</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="name"
+                       ng-model="name" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Кількість</label>
+            <div class="col-md-10">
+                <input type="number" class="form-control" name="headoffice"
+                       ng-model="count" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="col-md-12">
+                <input type="submit" value="Додати" class="btn btn-primary center-block"/>
+            </div>
+        </div>
+    </form>
     </div>
     <table class="table table-bordered table-striped">
         <thead>
@@ -72,30 +86,21 @@
                 </a>
             </td>
             <td>
-                <a  ng-click="sortType = 'leftovers'; sortReverse = !sortReverse">
-                    Залишки на складі
-                    <span ng-show="sortType == 'leftovers' && !sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'leftovers' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-            </td>
-            <td>
-                <a  ng-click="sortType = 'sold'; sortReverse = !sortReverse">
-                    Кількість проданого
-                    <span ng-show="sortType == 'sold' && !sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'sold' && sortReverse" class="fa fa-caret-up"></span>
+                <a  ng-click="sortType = 'count'; sortReverse = !sortReverse">
+                    Кількість
+                    <span ng-show="sortType == 'count' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'count' && sortReverse" class="fa fa-caret-up"></span>
                 </a>
             </td>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="sale in sales | orderBy:sortType:sortReverse | filter:searchFish">
-            <td>{{ sale.articul }}</td>
-            <td>{{ sale.name }}</td>
-            <td>{{ sale.leftovers }}</td>
-            <td>{{ sale.sold }}</td>
+        <tr ng-repeat="order in orders | orderBy:sortType:sortReverse | filter:searchFish">
+            <td>{{ order.articul }}</td>
+            <td>{{ order.name }}</td>
+            <td>{{ order.count }}</td>
         </tr>
         </tbody>
     </table>
-        <button type="button" class="btn btn-success btn-lg center-block">Зберегти</button>
+    <button  type="button" class="btn btn-success btn-lg center-block">Зберегти</button>
 </div>
-

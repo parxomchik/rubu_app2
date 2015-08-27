@@ -1,0 +1,151 @@
+<div ng-controller="suggestionsCtrl">
+    <nav class="navbar navbar-inverse margin_fix border_radius_fix">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown login_user">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Добро пожаловать,Иван<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Изменить пароль</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Выйти</a></li>
+                        </ul>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+<div class="col-sm-12">
+    <div class="col-sm-4 margin_top_20"><a class="btn btn-default" href="#/clientpage" role="button">Назад в меню</a></div>
+    <div class="col-sm-8">
+        <h2 class="text-left">Пропозиції за період {{date | date:'dd.MM.yyyy'}}</h2>
+    </div>
+    <div class="col-sm-6">
+        <h4 class="text-center">Контрагент: К7</h4>
+    </div>
+    <div class="col-sm-6">
+        <h4 class="text-center">Автор: Пупкін Микола</h4>
+    </div>
+    <form class="form-horizontal" role="form" ng-submit="addRow()">
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Артикул</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="articul"
+                       ng-model="articul" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Назва</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="name"
+                       ng-model="name" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Кількість</label>
+            <div class="col-md-10">
+                <input type="number" class="form-control" name="headoffice"
+                       ng-model="count" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Ціна</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="headoffice"
+                       ng-model="price" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Імя</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="headoffice"
+                       ng-model="customerName" />
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-md-2 control-label">Телефон</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="headoffice"
+                       ng-model="phoneNumber" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <div>
+                <input type="submit" value="Додати пропозицію" class="btn btn-primary center-block"/>
+            </div>
+        </div>
+    </form>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <td>
+                <a  ng-click="sortType = 'articul'; sortReverse = !sortReverse">
+                    Артикул
+                    <span ng-show="sortType == 'articul' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'articul' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                    Назва
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'count'; sortReverse = !sortReverse">
+                    Кількість
+                    <span ng-show="sortType == 'count' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'count' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'price'; sortReverse = !sortReverse">
+                    Ім'я
+                    <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'customerName'; sortReverse = !sortReverse">
+                    Ціна
+                    <span ng-show="sortType == 'customerName' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'customerName' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+            <td>
+                <a  ng-click="sortType = 'PhoneNumber'; sortReverse = !sortReverse">
+                    Телефон
+                    <span ng-show="sortType == 'PhoneNumber' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'PhoneNumber' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="suggestion in suggestions | orderBy:sortType:sortReverse | filter:searchFish">
+            <td>{{ suggestion.articul }}</td>
+            <td>{{ suggestion.name }}</td>
+            <td>{{ suggestion.count }}</td>
+            <td>{{ suggestion.price }}</td>
+            <td>{{ suggestion.customerName }}</td>
+            <td>{{ suggestion.phoneNumber }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <button  type="button" class="btn btn-success btn-lg center-block">Зберегти</button>
+</div>
